@@ -1,0 +1,17 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: "accounts"
+
+  datasource:
+    url: jdbc:mysql://localhost:3360/accounts
+    username: root
+    password: magento
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
