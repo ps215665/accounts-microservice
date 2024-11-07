@@ -6,7 +6,7 @@ spring:
   application:
     name: "accounts"
   profiles:
-    active: "qa"
+    active: "prod"
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3360}/${MYSQL_DATABASE:accounts}
     username: ${MYSQL_USERNAME:root}
@@ -22,3 +22,9 @@ spring:
 
   config:
     import: "optional:configserver:http://localhost:8082/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
