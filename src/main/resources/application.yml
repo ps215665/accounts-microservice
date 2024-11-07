@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: "accounts"
+  profiles:
+    active: "qa"
 
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3360}/${MYSQL_DATABASE:accounts}
@@ -18,5 +20,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-
-
