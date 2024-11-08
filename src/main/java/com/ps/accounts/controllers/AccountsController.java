@@ -1,5 +1,6 @@
 package com.ps.accounts.controllers;
 
+import com.ps.accounts.config.ApiConfig;
 import com.ps.accounts.constants.AccountConstants;
 import com.ps.accounts.dto.CustomerDto;
 import com.ps.accounts.dto.ResponseDto;
@@ -19,17 +20,22 @@ import java.util.Map;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@RefreshScope
+//@RefreshScope
 public class AccountsController {
 
     private final AccountServiceInterface accountService;
+    private final ApiConfig apiConfig;
 
-    public AccountsController(AccountServiceInterface accountService) {
+    public AccountsController(
+        AccountServiceInterface accountService,
+        ApiConfig apiConfig
+    ) {
         this.accountService = accountService;
+        this.apiConfig = apiConfig;
     }
 
-    @Value("${build.version}")
-    private String buildVersion;
+//    @Value("${build.version}")
+//    private String buildVersion;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
@@ -91,10 +97,11 @@ public class AccountsController {
     @GetMapping("/version")
     public ResponseEntity<Map<String, String>> buildVersion()
     {
+        String version = this.apiConfig.getVersion();
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(
-                        Map.of("version", buildVersion)
+                        Map.of("version", version)
                 );
     }
 }
