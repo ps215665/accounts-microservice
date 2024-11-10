@@ -8,7 +8,7 @@ import com.ps.accounts.services.AccountServiceInterface;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
