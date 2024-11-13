@@ -23,6 +23,9 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8097/"
   cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
     bus:
       enabled: true
 
@@ -61,3 +64,12 @@ info:
     name: "accounts"
     description: "Accounts Application"
     version: "1.0.0"
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      sliding-window-size: 10
+      permitted-number-of-calls-in-half-open-state: 2
+      failure-rate-threshold: 50
+      wait-duration-in-open-state:
+        seconds: 10000
